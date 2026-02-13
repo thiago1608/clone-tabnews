@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Client } from "pg";
 
 async function query(queryObject) {
@@ -28,10 +29,11 @@ async function getNewClient() {
   return client;
 }
 
-export default {
+const database = {
   query,
   getNewClient,
 };
+export default database;
 
 function getSSLValues() {
   if (process.env.POSTGRES_CA) {
@@ -39,5 +41,5 @@ function getSSLValues() {
       ca: process.emv.POSTGRES_CA,
     };
   }
-  return process.env.NODE_ENV === "development" ? false : true;
+  return process.env.NODE_ENV === "production" ? true : false;
 }
