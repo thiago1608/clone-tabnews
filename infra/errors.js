@@ -4,13 +4,16 @@ export class InternalServerError extends Error {
       cause,
     });
     this.name = "InternalServerError";
-    this.cause = cause;
+    this.action = "Entre em contato com o suporte.";
+    this.statusCode = 500;
   }
 
   toJson() {
     return {
       name: this.name,
       message: this.message,
+      action: this.action,
+      status_code: this.statusCode,
     };
   }
 }
